@@ -35,7 +35,8 @@ int printArray(int values[10]) {
 	}
 }
 
-//requires: 
+//requires: frequencies of each element
+//effects: prints stars according to the nujmber of frequency
 int arrayHistogram(int array[]) {
     int frequencies[SIZE];
     int visited = -1;
@@ -77,12 +78,15 @@ void stars(int x) {
     }
 }
 
+//requires: two indices to swap them
+//effect: swap the values found in each index
 int swap(int values[], int i, int j) {
     int temp = values[i];
     values[i] = values[j];
     values[j] = temp;
 }
-
+//requires: length of array
+//effect: sort the array in ascending order using bubble sort method
 void bubbleSort(int values[], int arraylength) {
     for (int i = 0; i < arraylength - 1; i++) {
         for (int j = 0; j < arraylength - i - 1; j++) {
@@ -92,7 +96,10 @@ void bubbleSort(int values[], int arraylength) {
     }
 }
 
-int median(int* values, int arraylength) {
+
+// requires: an array and its size
+//effect: returns the median of the array 
+int median(int values[], int arraylength) {
     bubbleSort(values, arraylength);
     int median;
     if (arraylength % 2 == 0) {
@@ -105,6 +112,8 @@ int median(int* values, int arraylength) {
 
 }
 
+// requires: an array and its size
+//effect: returns the mode (molst frequent element) of the array 
 int mode(int values[], int arraylength) {
     int mode = 0;
     int maxFreq = 0;
@@ -123,9 +132,11 @@ int mode(int values[], int arraylength) {
     return mode;
 }
 
-int isSorted(int values[], int n) {
-    for (int i = 0; i < n; i++) {
-        for (int j = n - 1; j > 0; j--) {
+//requires: the array and its size
+//effect: return if the array is sorted or not
+int isSorted(int values[], int arraysize) {
+    for (int i = 0; i < arraysize; i++) {
+        for (int j = arraysize - 1; j > 0; j--) {
             if (values[j] < values[j - 1]) {
                 return 0;
             }
